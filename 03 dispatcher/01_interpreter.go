@@ -3,14 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	var program = []interface{}{
+	interpret([]interface{}{
 		PUSH, 13,
 		PUSH, 28,
 		ADD,
 		PRINT,
 		EXIT,
-	}
-	interpret(program)
+	})
 }
 
 type stack struct {

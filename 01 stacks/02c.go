@@ -17,16 +17,16 @@ func (s stack) Pop() (v int, r stack) {
 }
 
 func (s stack) Depth() (r int) {
-  for t := s.tail; t != nil; t = t.tail {
-    r++
-  }
-  return
+	for t := s.tail; t != nil; t = t.tail {
+		r++
+	}
+	return
 }
 
 func (s *stack) append(n int) {
-  t := s
-  for ; t.tail != nil; t = t.tail {}
-  *t = stack{data: n, tail: new(stack)}
+	t := s
+	for ; t.tail != nil; t = t.tail {}
+	*t = stack{data: n, tail: new(stack)}
 }
 
 func main() {
@@ -34,20 +34,20 @@ func main() {
 	var s stack
 
 	s = s.Push(1).Push(3)
-  fmt.Printf("depth = %d\n", s.Depth())
-  s.append(20)
-  fmt.Printf("depth = %d\n", s.Depth())
+	fmt.Printf("depth = %d\n", s.Depth())
+	s.append(20)
+	fmt.Printf("depth = %d\n", s.Depth())
 
 	l, s = s.Pop()
 	r, s = s.Pop()
 	fmt.Printf("%d + %d = %d\n", l, r, l+r)
 
-  l, s = s.Pop()
-  fmt.Printf("l = %d\n", l)
-  fmt.Printf("depth = %d\n", s.Depth())
+	l, s = s.Pop()
+	fmt.Printf("l = %d\n", l)
+	fmt.Printf("depth = %d\n", s.Depth())
 
-  s.append(5)
-  l, s = s.Pop()
-  fmt.Printf("l = %d\n", l)
-  fmt.Printf("depth = %d\n", s.Depth())
+	s.append(5)
+	l, s = s.Pop()
+	fmt.Printf("l = %d\n", l)
+	fmt.Printf("depth = %d\n", s.Depth())
 }

@@ -29,16 +29,16 @@ func (s *stack) Pop() (int, stack_status) {
 }
 
 func (s *stack) Depth() int {
-  return len(s.data)
+	return len(s.data)
 }
 
 func main() {
 	s := new(stack)
 	s.Push(1)
 	s.Push(3)
-  fmt.Printf("depth = %d\n", s.Depth())
+	fmt.Printf("depth = %d\n", s.Depth())
 	l, _ := s.Pop()
 	r, _ := s.Pop()
 	fmt.Printf("%d + %d = %d\n", l, r, l+r)
-  fmt.Printf("depth = %d\n", s.Depth())
+	fmt.Printf("depth = %d\n", s.Depth())
 }

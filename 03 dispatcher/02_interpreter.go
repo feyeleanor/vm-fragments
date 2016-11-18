@@ -8,9 +8,7 @@ func main() {
 	p.m = []interface{}{
 		p.Push, 13,
 		p.Push, 28,
-		p.Add,
-		p.Print,
-		p.Exit,
+		p.Add, p.Print, p.Exit,
 	}
 	p.Run()
 }
@@ -21,9 +19,9 @@ type stack struct {
 }
 
 func (s *stack) Push(v int) (r *stack) {
-	r = &stack{data: v, tail: s}
-	return
+	return &stack{data: v, tail: s}
 }
+
 func (s *stack) Pop() (v int, r *stack) {
 	return s.data, s.tail
 }
@@ -34,24 +32,20 @@ type Interpreter struct {
 	m        []interface{}
 }
 
-func (i *Interpreter) opcode() func() {
-	return i.m[i.PC].(func())
-}
-
-func (i *Interpreter) operand() int {
-	return i.m[i.PC].(int)
+func (i *Interpreter) read_program() (r interface{}) {
+	return i.m[i.PC]
 }
 
 func (i *Interpreter) Run() {
 	for {
-		i.opcode()()
+		i.read_program().(func())()
 		i.PC++
 	}
 }
 
 func (i *Interpreter) Push() {
 	i.PC++
-	i.S = i.S.Push(i.operand())
+	i.S = i.S.Push(i.read_program().(int))
 }
 
 func (i *Interpreter) Add() {

@@ -17,10 +17,10 @@ func (s stack) Pop() (v int, r stack) {
 }
 
 func (s stack) Depth() (r int) {
-  for t := s.tail; t != nil; t = t.tail {
-    r++
-  }
-  return
+	for t := s.tail; t != nil; t = t.tail {
+		r++
+	}
+	return
 }
 
 func main() {
@@ -28,9 +28,9 @@ func main() {
 	var s stack
 
 	s = s.Push(1).Push(3)
-  fmt.Printf("depth = %d\n", s.Depth())
+	fmt.Printf("depth = %d\n", s.Depth())
 	l, s = s.Pop()
 	r, s = s.Pop()
 	fmt.Printf("%d + %d = %d\n", l, r, l+r)
-  fmt.Printf("depth = %d\n", s.Depth())
+	fmt.Printf("depth = %d\n", s.Depth())
 }
