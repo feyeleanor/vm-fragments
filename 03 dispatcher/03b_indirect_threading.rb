@@ -5,13 +5,6 @@ class VM
 
 	def initialize *program
 		@s = []
-		@program = program.collect do |v|
-			OPCODES.include?(v) ? self.method(v) : v
-		end
-	end
-
-	def initialize *program
-		@s = []
 		m = methods
 		load(program)
 	end

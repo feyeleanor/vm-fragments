@@ -23,9 +23,9 @@ func main() {
 	s := new(stack)
 	s.Push(1)
 	s.Push(3)
-  fmt.Printf("depth = %d\n", s.Depth())
+	fmt.Printf("depth = %d\n", s.Depth())
 	l := s.Pop()
 	r := s.Pop()
 	fmt.Printf("%d + %d = %d\n", l, r, l+r)
-  fmt.Printf("depth = %d\n", s.Depth())
+	fmt.Printf("depth = %d\n", s.Depth())
 }
